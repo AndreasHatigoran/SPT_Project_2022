@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matakuliah</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col md-12 mt-3">
+                <h1>Draft Materi Kuliah</h1>
+                <hr>
+                <table class="table table-striped mt-4">
+                    <tr>
+
+                        <a href="{{ url_for('index') }}" type="button" class="btn btn-secondary">Create</a>
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Topik</th>
+                        <th>Tanggal</th>
+                        <th>Deskripsi</th>
+                        <th>File</th>
+                    </tr>
+
+                    {% for row in submission_data%}
+                    <tr>
+                        <td>
+                            {{ row.0 }}
+                        </td>
+                        <td>{{ row.3 }}</td>
+                        <td>{{ row.4 }}</td>
+                        <td>{{ row.5 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>
+                            <a href="{{url_for('delete', id=row.0)}}" class="btn btn-secondary">Hapus</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

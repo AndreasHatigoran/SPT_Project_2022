@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matakuliah</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="col-sm-8">
+        <div class="container mt-3">
+            <h1>Upload Modul</h1>
+            <hr>
+            <form name="submissionForm" method="POST" action="/upload" onsubmit="return validateForm(event)"
+                enctype="multipart/form-data">
+                <div class="form-group">
+                    <p>
+                        <label>Topik :</label>
+                        <input type="text" name="topik" placeholder="Masukkan topik materi" />
+                    </p>
+                    <p>
+                        <label>Tanggal :</label>
+                        <input type="text" name="tanggal" placeholder="Masukkan tanggal" />
+                  </p>
+                  <p>
+                    <label>Deskripsi :</label>
+                    <textarea rows="4" cols="50" name="deskripsi" placeholder="Deskripsi.."></textarea>
+                  </p>
+                    <label>Choose your file</label>
+                    <div class="custom-file">
+                        <input type="file" name="inputFile" id="file" accept=".jpg, .pdf, .zip, .doc, .docx"
+                            class="custom-file-input">
+                        <label class="custom-file-label" for="inputFile">Select file...</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $('#file').on('change', function () {
+            var fileName = $(this).val().replace('C:\\fakepath\\', "");
+            $(this).next('.custom-file-label').html(fileName);
+        })
+    </script>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["submissionForm"]["inputFile"].value;
+            if (x == "") {
+                alert("Submission file must be included");
+                return false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
